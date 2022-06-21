@@ -2,7 +2,7 @@
 Java で分数を表現するためのクラス.
 
 # 例
-## 分数同士の足し算
+## 分数同士の足し算(add())
 ```
 Fraction frac1 = Fraction.parse("1/2"); // 1/2
 Fraction frac2 = new Fraction(1, 3); // 1/3
@@ -11,7 +11,7 @@ System.out.printf("%s + %s = %s\n", frac1, frac2, frac1.add(frac2));
 
 >  (1 / 2) + (1 / 3) = (5 / 6)
 
-## 分数と整数との足し算
+## 分数と整数との足し算(add())
 
 ```
 Fraction frac1 = Fraction.parse("1/2"); // 1/2
@@ -21,7 +21,7 @@ System.out.printf("%s + %s = %s\n", frac1, value, frac1.add(value));
 
 > (1 / 2) + 3 = (7 / 2)
 
-## 分数同士の掛け算
+## 分数同士の掛け算(multiply())
 
 ```
 Fraction frac1 = Fraction.parse("1/2"); // 1/2
@@ -31,7 +31,7 @@ System.out.printf("%s × %s = %s\n", frac1, frac2, frac1.multiply(frac2));
 
 > (1 / 2) × (1 / 3) = (1 / 6)
 
-## 分数と整数の掛け算
+## 分数と整数の掛け算(multiply())
 
 ```
 Fraction frac2 = new Fraction(1, 3); // 1/3
