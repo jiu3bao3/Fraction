@@ -1,8 +1,20 @@
 # Fraction
 Java で分数を表現するためのクラス.
 
-# 例
-## 分数同士の足し算(add())
+## ビルド
+Apach Ant用のビルドスクリプトbuild.xmlを用意してありますが，javacコマンドでもまったく問題ありません。
+
+### コンパイルとテスト実行
+
+`ant`
+
+### Javadocドキュメント生成
+
+`ant javadoc`
+
+## 使用例
+
+### 分数同士の足し算(add())
 ```
 Fraction frac1 = Fraction.parse("1/2"); // 1/2
 Fraction frac2 = new Fraction(1, 3); // 1/3
@@ -11,7 +23,7 @@ System.out.printf("%s + %s = %s\n", frac1, frac2, frac1.add(frac2));
 
 >  (1 / 2) + (1 / 3) = (5 / 6)
 
-## 分数と整数との足し算(add())
+### 分数と整数との足し算(add())
 
 ```
 Fraction frac1 = Fraction.parse("1/2"); // 1/2
@@ -21,7 +33,7 @@ System.out.printf("%s + %s = %s\n", frac1, value, frac1.add(value));
 
 > (1 / 2) + 3 = (7 / 2)
 
-## 分数同士の掛け算(multiply())
+### 分数同士の掛け算(multiply())
 
 ```
 Fraction frac1 = Fraction.parse("1/2"); // 1/2
@@ -31,7 +43,7 @@ System.out.printf("%s × %s = %s\n", frac1, frac2, frac1.multiply(frac2));
 
 > (1 / 2) × (1 / 3) = (1 / 6)
 
-## 分数と整数の掛け算(multiply())
+### 分数と整数の掛け算(multiply())
 
 ```
 Fraction frac2 = new Fraction(1, 3); // 1/3
@@ -42,7 +54,7 @@ System.out.printf("%s × %s = %s\n", frac2, value, frac2.multiply(value));
 >  (1 / 3) × 3 = 1
 
 
-## ソート
+### ソート
 乱数を使って10個の分数を生成し，それを昇順にソートしてみます。
 
 ```
