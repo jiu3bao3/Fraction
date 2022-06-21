@@ -53,6 +53,25 @@ System.out.printf("%s × %s = %s\n", frac2, value, frac2.multiply(value));
 
 >  (1 / 3) × 3 = 1
 
+### 分数同士の引き算(subtract())
+
+```
+Fraction frac1 = Fraction.parse("1/2"); // 1/2
+Fraction frac2 = new Fraction(1, 3); // 1/3
+System.out.printf("%s - %s = %s\n", frac1, frac2, frac1.subtract(frac2));
+```
+
+> (1 / 2) - (1 / 3) = (1 / 6)
+
+### 分数同士の割り算(divide())
+
+```
+Fraction frac1 = Fraction.parse("1/2"); // 1/2
+Fraction frac2 = new Fraction(1, 3); // 1/3
+System.out.printf("%s ÷ %s = %s\n", frac1, frac2, frac1.divide(frac2));
+```
+
+>  (1 / 2) ÷ (1 / 3) = (3 / 2)
 
 ### ソート
 乱数を使って10個の分数を生成し，それを昇順にソートしてみます。
