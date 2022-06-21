@@ -2,6 +2,7 @@
 <project name="fraction" default="test">
     <property name="product_dir" location="target/classes" />
     <property name="test_dir" location="target/test" />
+    <property name="doc_dir" location="target/api-doc" />
     <target name="compile">
         <mkdir dir="${product_dir}" />
         <mkdir dir="${test_dir}" />
@@ -26,5 +27,14 @@
                 <pathelement location="${test_dir}" />
             </classpath>
         </java>
+    </target>
+    <target name="javadoc">
+        <javadoc destdir="${doc_dir}"  encoding="UTF-8" charset="UTF-8">
+            <sourcefiles>
+                <fileset dir="src">
+                    <include name="**/*.java" />
+                </fileset>
+            </sourcefiles>
+        </javadoc>
     </target>
 </project>
