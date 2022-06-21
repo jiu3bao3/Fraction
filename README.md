@@ -42,6 +42,28 @@ System.out.printf("%s × %s = %s\n", frac2, value, frac2.multiply(value));
 >  (1 / 3) × 3 = 1
 
 
+## ソート
+乱数を使って10個の分数を生成し，それを昇順にソートしてみます。
 
+```
+List<Fraction> list = new ArrayList<>();
+Random rand = new Random();
+for(int i = 0; i < 10; i++)
+{
+    list.add(new Fraction(1, rand.nextInt(100)));
+}
+
+list.stream().forEach((Fraction frac) -> System.out.printf("%s\t", frac));
+System.out.printf("\n");
+
+Collections.sort(list);
+
+list.stream().forEach((Fraction frac) -> System.out.printf("%s\t", frac));
+System.out.printf("\n");
+```
+
+> (1 / 98)  (1 / 11)  (1 / 50)  (1 / 47)  (1 / 19)  (1 / 64)  (1 / 57)  (1 / 14)  (1 / 14)  (1 / 76)
+> 
+> (1 / 98)  (1 / 76)  (1 / 64)  (1 / 57)  (1 / 50)  (1 / 47)  (1 / 19)  (1 / 14)  (1 / 14)  (1 / 11) 
 
 
