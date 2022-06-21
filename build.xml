@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<project name="fraction" default="test">
+    <property name="product_dir" location="target/classes" />
+    <property name="test_dir" location="target/test" />
+    <target name="compile">
+        <mkdir dir="${product_dir}" />
+        <mkdir dir="${test_dir}" />
+        <javac srcdir="src" destdir="${product_dir}" encoding="UTF-8" nowarn="true" includeantruntime="false" />
+    </target>
+    <target name="test" depends="compile">
+        <javac srcdir="test" destdir="${test_dir}" encoding="UTF-8" nowarn="true" includeantruntime="false">
+            <classpath>
+                <fileset dir="lib">
+                    <include name="**/*.jar"/>
+                </fileset>
+                <pathelement location="${product_dir}" />
+            </classpath>
+        </javac>
+        <java classname="org.junit.runner.JUnitCore">
+            <arg value="FractionTest" />
+            <classpath>
+                <fileset dir="lib">
+                    <include name="**/*.jar"/>
+                </fileset>
+                <pathelement location="${product_dir}" />
+                <pathelement location="${test_dir}" />
+            </classpath>
+        </java>
+    </target>
+</project>
