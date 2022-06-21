@@ -1,2 +1,3 @@
 # Fraction
-Java Fraction class for mathematics.
+Java で分数を表現するためのクラス.
+
