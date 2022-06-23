@@ -366,4 +366,37 @@ public class FractionTest
         Fraction frac = new Fraction(3, 4);
         Assert.assertFalse(message, frac.equals(null));
     }
+    //----------------------------------------------------------------------------------------------
+    /**
+     * 正の分数の絶対値が算出できること
+     */
+    @Test
+    public void absWithPositiveTest()
+    {
+        final String message = "正の分数の絶対値が算出できること";
+        Fraction frac = new Fraction(7, 9);
+        Assert.assertEquals(message, frac.abs(), frac);
+    }
+    //----------------------------------------------------------------------------------------------
+    /**
+     * 負の分数の絶対値が算出できること
+     */
+    @Test
+    public void absWithNegativeTest()
+    {
+        final String message = "正の分数の絶対値が算出できること";
+        Fraction frac = new Fraction(-5, 9);
+        Assert.assertEquals(message, frac.abs(), new Fraction(5, 9));
+    }
+    //----------------------------------------------------------------------------------------------
+    /**
+     * 0の分数の絶対値が算出できること
+     */
+    @Test
+    public void absWithZeroTest()
+    {
+        final String message = "正の分数の絶対値が算出できること";
+        Fraction frac = new Fraction(0, 9);
+        Assert.assertEquals(message, frac.abs(), new Fraction(0, 5));
+    }
 }

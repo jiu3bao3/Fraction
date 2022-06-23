@@ -19,6 +19,7 @@ public class Fraction extends Number implements Serializable, Comparable<Fractio
      * 文字列からFractionを作成する.
      * @param val 解析対象の文字列
      * @return 作成したFraction
+     * @throws IllegalArgumentException 文字列の解析に失敗した場合
      */
     public static Fraction parse(final String val)
     {
@@ -46,6 +47,8 @@ public class Fraction extends Number implements Serializable, Comparable<Fractio
      * コンストラクタ.
      * @param numerator 分子
      * @param denominator 分母
+     * @throws NullPointerException 分母または分子がnullの場合
+     * @throws IllegalArgumentException 分母が0となる場合
      */
     public Fraction(final BigInteger numerator, final BigInteger denominator)
     {
@@ -83,7 +86,9 @@ public class Fraction extends Number implements Serializable, Comparable<Fractio
         this(new BigInteger(Long.toString(numerator)));
     }
     //----------------------------------------------------------------------------------------------
-    /** デフォルトコンストラクタ. */
+    /** デフォルトコンストラクタ.
+     * サブクラスから呼び出すためのコンストラクタ
+     */
     protected Fraction() {}
     //----------------------------------------------------------------------------------------------
     /**
@@ -197,6 +202,8 @@ public class Fraction extends Number implements Serializable, Comparable<Fractio
      * 除算を行う.
      * @param another 除算対象の分数
      * @return 除算結果
+     * @throws NullPointerException 引数にnullを与えた場合
+     * @throws IllegalArgumentException 引数に0を与えた場合
      */
     public Fraction divide(final Fraction another)
     {
@@ -212,6 +219,8 @@ public class Fraction extends Number implements Serializable, Comparable<Fractio
      * 除算を行う.
      * @param another 除算対象の整数
      * @return 除算結果
+     * @throws NullPointerException 引数にnullを与えた場合
+     * @throws IllegalArgumentException 引数に0を与えた場合
      */
     public Fraction divide(final BigInteger another)
     {
@@ -227,6 +236,7 @@ public class Fraction extends Number implements Serializable, Comparable<Fractio
      * 除算を行う.
      * @param another 除算対象の整数
      * @return 除算結果
+     * @throws IllegalArgumentException 引数に0を与えた場合
      */
     public Fraction divide(final long another)
     {
@@ -248,6 +258,15 @@ public class Fraction extends Number implements Serializable, Comparable<Fractio
         {
             return (numerator.compareTo(zero) >= 0) ^ (denominator.compareTo(zero) >= 0);
         }
+    }
+    //----------------------------------------------------------------------------------------------
+    /**
+     * 分数の絶対値を返す.
+     * @return 絶対値
+     */
+    public Fraction abs()
+    {
+        return isNegative() ? this.multiply(-1) : this;
     }
     //----------------------------------------------------------------------------------------------
     /**
