@@ -1,6 +1,7 @@
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 import java.io.Serializable;
 import java.math.BigInteger;
+import java.math.BigDecimal;
 import java.util.regex.Pattern;
 import java.util.regex.Matcher;
 ////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -41,6 +42,18 @@ public class Fraction extends Number implements Serializable, Comparable<Fractio
         {
             throw new IllegalArgumentException(val);
         }
+    }
+    //----------------------------------------------------------------------------------------------
+    /**
+     * 小数を分数に変換する.
+     * @param val 変換対象の小数
+     * @return 変換した分数
+     */
+    public static Fraction of(final BigDecimal val)
+    {
+        if(val == null) return null;
+        BigInteger num = val.multiply(BigDecimal.TEN.pow(val.scale())).toBigInteger();
+        return new Fraction(num, BigInteger.TEN.pow(val.scale()));
     }
     //----------------------------------------------------------------------------------------------
     /**
@@ -90,6 +103,24 @@ public class Fraction extends Number implements Serializable, Comparable<Fractio
      * サブクラスから呼び出すためのコンストラクタ
      */
     protected Fraction() {}
+    //----------------------------------------------------------------------------------------------
+    /**
+     * 分子を取得する.
+     * @return 分子
+     */
+    public BigInteger getNumerator()
+    {
+        return numerator;
+    }
+    //----------------------------------------------------------------------------------------------
+    /**
+     * 分母を取得する.
+     * @return 分母
+     */
+    public BigInteger getDenominator()
+    {
+        return denominator;
+    }
     //----------------------------------------------------------------------------------------------
     /**
      * 加算を行う

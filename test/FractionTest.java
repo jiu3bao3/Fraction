@@ -1,6 +1,7 @@
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 import java.lang.reflect.Field;
 import java.math.BigInteger;
+import java.math.BigDecimal;
 
 import org.junit.Assert;
 import org.junit.Test;
@@ -398,5 +399,38 @@ public class FractionTest
         final String message = "正の分数の絶対値が算出できること";
         Fraction frac = new Fraction(0, 9);
         Assert.assertEquals(message, frac.abs(), new Fraction(0, 5));
+    }
+    //----------------------------------------------------------------------------------------------
+    /**
+     * 小数を分数に正しく変換できること
+     */
+    @Test
+    public void ofHalfDecimalTest()
+    {
+        final String message = "小数を分数に正しく変換できること";
+        Fraction frac = Fraction.of(new BigDecimal("0.50"));
+        Assert.assertEquals(message, frac, new Fraction(1, 2));
+    }
+    //----------------------------------------------------------------------------------------------
+    /**
+     * 負の小数を分数に正しく変換できること
+     */
+    @Test
+    public void ofNegativeDecimalTest()
+    {
+        final String message = "小数を分数に正しく変換できること";
+        Fraction frac = Fraction.of(new BigDecimal("-3.14"));
+        Assert.assertEquals(message, frac, new Fraction(-157, 50));
+    }
+    //----------------------------------------------------------------------------------------------
+    /**
+     * 0の小数を分数に正しく変換できること
+     */
+    @Test
+    public void ofZeroDecimalTest()
+    {
+        final String message = "小数を分数に正しく変換できること";
+        Fraction frac = Fraction.of(new BigDecimal("0.0000"));
+        Assert.assertEquals(message, frac, new Fraction(0));
     }
 }
